@@ -1,15 +1,15 @@
 <?php
 /**
  * @package Jpop_Lyrics
- * @version 1.6
+ * @version 1.0
  */
 /*
 Plugin Name: J-pop Lyrics
 Plugin URI: http://wordpress.org/extend/plugins/jpop-lyrics/
-Description: Assistant for the posts containing J-pop lyrics.
+Description: Wordpress Assistant for the posts containing J-pop lyrics.
  
 Author: Gyeonghwan Hong
-Version: 1.6
+Version: 1.0
 Author URI: http://redcarottt.com/
 */
 
