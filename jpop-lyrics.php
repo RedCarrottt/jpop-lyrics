@@ -27,19 +27,19 @@ function jpop_lyrics_head_func() {
 		var onJpopMode = function(mode) {
 			switch(mode) {
 			case 1:
-				jQuery(".jpop-lyrics-line-orig").css("display", "block");
-				jQuery(".jpop-lyrics-line-pron").css("display", "block");
-				jQuery(".jpop-lyrics-line-tran").css("display", "block");
+				jQuery(".jpop-lyrics-line-orig").animate({"opacity": "1"}, 500);
+				jQuery(".jpop-lyrics-line-pron").animate({"opacity": "1"}, 500);
+				jQuery(".jpop-lyrics-line-tran").animate({"opacity": "1"}, 500);
 				break;
 			case 2:
-				jQuery(".jpop-lyrics-line-orig").css("display", "block");
-				jQuery(".jpop-lyrics-line-pron").css("display", "none");
-				jQuery(".jpop-lyrics-line-tran").css("display", "block");
+				jQuery(".jpop-lyrics-line-orig").animate({"opacity": "1"}, 500);
+				jQuery(".jpop-lyrics-line-pron").animate({"opacity": "0"}, 500);
+				jQuery(".jpop-lyrics-line-tran").animate({"opacity": "1"}, 500);
 				break;
 			case 3:
-				jQuery(".jpop-lyrics-line-orig").css("display", "block");
-				jQuery(".jpop-lyrics-line-pron").css("display", "none");
-				jQuery(".jpop-lyrics-line-tran").css("display", "none");
+				jQuery(".jpop-lyrics-line-orig").animate({"opacity": "1"}, 500);
+				jQuery(".jpop-lyrics-line-pron").animate({"opacity": "0"}, 500);
+				jQuery(".jpop-lyrics-line-tran").animate({"opacity": "0"}, 500);
 			break;
 			}
 		}
