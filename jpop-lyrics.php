@@ -1,7 +1,7 @@
 <?php
 /**
  * @package Jpop_Lyrics
- * @version 1.1
+ * @version 1.2
  */
 /*
 Plugin Name: J-pop Lyrics
@@ -9,21 +9,37 @@ Plugin URI: http://wordpress.org/extend/plugins/jpop-lyrics/
 Description: Wordpress Assistant for the posts containing J-pop lyrics.
  
 Author: Gyeonghwan Hong
-Version: 1.1
+Version: 1.2
 Author URI: http://redcarottt.com/
 */
 
 function jpop_lyrics_head_func() {
 	$css = '<style type="text/css">
-		.jpop-lyrics-buttons {
+		.jpop-lyrics-button {
 			padding-left: 10px;
 			background: #eeeeee;
+		}
+		.jpop-lyrics-button-floating {
+			position: static;
+			z-index: 999;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			diaplay: none;
 		}
 		.jpop-lyrics-verse {
 			margin-bottom: 10px;
 		}
 		</style>';
 	$script = '<script>
+		var floatButton = function() {
+			var buttonsFloating = jQuery(".jpop-lyrics-button-floating");
+			buttonsFloating.css({"display": "block", "position": "fixed", "z-index": "999"});
+		}
+		var unfloatButton = function() {
+			var buttonsFloating = jQuery(".jpop-lyrics-button-floating");
+			buttonsFloating.css({"display": "none", "position": "static"});
+		}
 		var onJpopMode = function(mode) {
 			switch(mode) {
 			case 1:
@@ -91,16 +107,26 @@ function jpop_lyrics_short_func($attrs, $content = null) {
 		$output = $output . $verse_output;
 	}
 
-	$upper_buttons = '<div class="jpop-lyrics-buttons">
-		<b>J-pop Viewer</b>:
+	$upper_buttons = '<div class="jpop-lyrics-button jpop-lyrics-button-static">
 		<a onClick="onJpopMode(1);">원어-발음-번역</a> |
 		<a onClick="onJpopMode(2);">원어-번역</a> |
-		<a onClick="onJpopMode(3);">원어</a> </div>';
+		<a onClick="onJpopMode(3);">원어</a> |
+	  <a onClick="floatButton();">고정</a> </div>';
 	
 	return '<div class="jpop-lyrics-block">' . $upper_buttons . $output .'</div>';
 }
 
+function jpop_lyrics_footer_func() {
+	$div_tag = '<div class="jpop-lyrics-button jpop-lyrics-button-floating">
+		<a onClick="onJpopMode(1);">원어-발음-번역</a> |
+		<a onClick="onJpopMode(2);">원어-번역</a> |
+		<a onClick="onJpopMode(3);">원어</a> |
+	  <a onClick="unfloatButton();">닫기</a>	</div>';
+	echo $div_tag;
+}
+
 add_action('wp_head', 'jpop_lyrics_head_func');
+add_action('wp_footer', 'jpop_lyrics_footer_func');
 add_shortcode('jpop-lyrics', 'jpop_lyrics_short_func');
 
 ?>
