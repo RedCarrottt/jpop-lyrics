@@ -25,7 +25,7 @@ function jpop_lyrics_head_func() {
 			top: 0px;
 			left: 0px;
 			width: 100%;
-			diaplay: none;
+			display: none;
 		}
 		.jpop-lyrics-verse {
 			margin-bottom: 10px;
